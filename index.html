@@ -3,257 +3,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Raksha Bandhan! ✨🎉</title>
+    <title>रक्षाबंधन की हार्दिक शुभकामनाएँ! ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #ff9800;
+            --accent-color: #673ab7;
+            --text-color-dark: #424242;
+            --text-color-light: #fff;
+            --bg-gradient-start: #fce4ec;
+            --bg-gradient-end: #fff3e0;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --share-section-bg: #ffebee;
+            --story-border-color: #f8bbd0;
+            --story-bg: #fdf5f8;
+        }
+
         body {
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f8ff; /* Fallback color */
-            /* Religious Theme Background (You need to provide this image) */
-            background-image: url('religious_background.gif'); /* Replace with your religious background GIF/image */
-            background-size: cover; /* Covers the entire viewport */
-            background-attachment: fixed; /* Keeps background fixed when scrolling */
-            background-position: center center;
-            padding: 20px;
             margin: 0;
-            color: #333; /* Darker text for readability over background */
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Changed from 100vh to ensure wrapper covers full height */
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            background-size: cover;
+            color: var(--text-color-dark);
+            text-align: center;
             position: relative;
-            overflow-x: hidden;
+            overflow-x: hidden; 
+            overflow-y: auto; /* Allow body to scroll if overall content exceeds view height */
         }
+
+        /* Main Wrapper for all content (excluding confetti, which is absolute) */
+        .main-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Start content from top */
+            min-height: 100vh; /* Ensure it takes full height */
+            width: 100%;
+            position: relative; /* For z-index to work against body */
+            z-index: 1; /* Ensure content is above confetti and ads don't overwrite it */
+            padding: 20px 0; /* Add some padding at top/bottom for overall layout */
+            box-sizing: border-box; /* Include padding in total width/height */
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 20px 40px; 
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 650px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10; /* Higher than main-content-wrapper for layering */
+            animation: fadeInScale 1.5s ease-out;
+            overflow-y: visible; /* Allow content to grow naturally, removed auto */
+            -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            margin: 20px 0; /* Add some space above and below the main container */
+        }
+
+        .container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .greeting-message {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0; 
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.1s;
+        }
+
+        .main-image {
+            width: 90%;
+            max-width: 450px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: -35px; 
+            display: block; 
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 0;
+            font-size: 0; 
+            animation: zoomIn 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
         h1 {
-            color: #8B0000; /* Dark Red */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            z-index: 10;
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-color);
+            font-size: 4.5em;
+            margin: 0; 
+            padding: 0; 
+            line-height: 0.55em; 
+            letter-spacing: -3px; 
+            margin-top: -30px; 
+            text-shadow: 3px 3px 7px rgba(0,0,0,0.1);
+            animation: pulsate 2s infinite alternate;
             position: relative;
+            animation-delay: 0.8s;
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
-        h2 {
-            color: #DAA520; /* Goldenrod */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            font-size: 2em;
-            margin-top: 30px;
-            z-index: 10;
-            position: relative;
+        
+        h1::after {
+            content: '🪅✨';
+            font-size: 0.6em;
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            animation: bounceUpDown 1.5s infinite ease-in-out;
         }
-        .main-content {
-            position: relative;
-            z-index: 9;
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background for readability */
+
+        @keyframes bounceUpDown {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-60%) translateX(5px); }
+        }
+
+        @keyframes pulsate {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+
+        .sub-heading {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin: 0; 
+            padding: 0; 
+            line-height: 1em; 
+            margin-top: -18px; 
+            margin-bottom: 25px; 
+            font-weight: 600;
+            animation: slideInLeft 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes slideInLeft {
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .share-sender-section {
+            background-color: var(--share-section-bg);
             padding: 25px;
             border-radius: 15px;
-            max-width: 900px;
-            margin: 20px auto;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: slideInRight 1.2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 1.6s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .main-gif-container {
+
+        @keyframes slideInRight {
+            0% { transform: translateX(50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .sender-name-input {
+            width: 80%;
+            max-width: 300px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            font-size: 1.1em;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        .sender-name-input::placeholder {
+            color: #a0a0a0;
+        }
+
+        .sender-name-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(103, 58, 183, 0.3);
+        }
+
+        .share-prompt {
+            font-size: 1.3em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+            animation: fadeIn 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: var(--text-color-light);
+            padding: 18px 35px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1.4em;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            letter-spacing: 0.5px;
             position: relative;
-            display: inline-block;
-            border: 6px solid gold;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             overflow: hidden;
         }
-        .main-gif {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        input[type="text"] {
-            padding: 14px;
-            margin: 18px auto; /* Centered margin */
-            width: 85%;
-            max-width: 400px;
-            border: 2px solid #FF6347;
-            border-radius: 10px;
-            font-size: 17px;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.15);
-            display: block; /* Ensures it takes full width and centers */
-        }
-        .whatsapp-button { /* Adjusted style for the WhatsApp button */
-            background-color: #25D366; /* WhatsApp brand green */
-            color: white;
-            border: none;
-            padding: 12px 25px; /* Adjusted padding for text and icon */
-            margin: 20px auto;
-            cursor: pointer;
-            display: flex; /* Use flexbox to align icon and text */
-            align-items: center; /* Vertically center content */
-            justify-content: center; /* Horizontally center content */
-            width: fit-content;
-            border-radius: 10px;
-            font-size: 1.2em; /* Larger font size for button text */
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .whatsapp-button:hover {
-            background-color: #1DA851; /* Darker green on hover */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
-        }
-        .whatsapp-button img {
-            width: 30px; /* Icon size */
-            height: auto;
-            margin-right: 10px; /* Space between icon and text */
+
+        .share-button i {
+            margin-right: 12px;
+            font-size: 1.5em;
         }
 
-        /* Raksha Bandhan Story Section */
-        .story-section {
-            background-color: #FFFACD; /* Lemon Chiffon for story background */
+        .share-button:hover {
+            background-color: #1DA851;
+            transform: translateY(-7px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .share-button:active {
+            transform: translateY(0);
+            box-shadow: 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .story-box {
+            background-color: var(--story-bg);
+            border: 2px dashed var(--story-border-color);
             padding: 30px;
-            margin: 35px auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-            max-width: 850px;
+            border-radius: 15px;
+            margin-top: 35px;
+            margin-bottom: 35px;
             text-align: left;
-            line-height: 1.9;
-            color: #4B0082; /* Indigo for story text */
-            font-size: 1.15em;
-            border: 4px solid #FFD700; /* Thicker Gold border for story box */
+            position: relative;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+            animation: slideInUp 1.2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 2.2s;
         }
-        .story-section h3 {
-            text-align: center;
-            color: #FF6347; /* Tomato for story heading */
-            font-size: 2.2em;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+
+        @keyframes slideInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
-        .emoji {
-            font-size: 1.3em;
-            vertical-align: middle;
+
+        .story-box p {
+            font-size: 1.1em; 
+            line-height: 1.6; 
+            color: var(--text-color-dark);
+            margin: 0 0 20px 0;
+            text-align: justify; 
+        }
+
+        .story-box .highlight {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fall 5s infinite;
+            z-index: 1;
+        }
+
+        .confetti:nth-child(2n) { background-color: #ff8a80; animation-delay: 1s; }
+        .confetti:nth-child(3n) { background-color: #81c784; animation-delay: 2s; }
+        .confetti:nth-child(4n) { background-color: #7986cb; animation-delay: 3s; }
+        .confetti:nth-child(5n) { background-color: #ffcc80; animation-delay: 4s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Ad Containers - Improved Styling */
+        .ad-container {
+            width: 100%; /* Take full width of its parent */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center the ad horizontally */
+            align-items: center; /* Center vertically if height allows */
+            margin: 25px 0; /* Increased vertical space around ads significantly */
+            min-height: 60px; /* Based on the ad's height: 60 */
+            overflow: hidden; /* Hide any overflow if the ad is larger */
+            position: relative; 
+            z-index: 5; /* Ensure ads are above confetti but below main content */
+            background-color: transparent; /* Ensure no background interferes */
+            border: 1px dashed rgba(0,0,0,0.1); /* Optional: Add a subtle border to ad slots for visibility */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            /* Add this to prevent any external script from squishing it */
+            flex-shrink: 0; 
+        }
+        /* Style for iframes within ad-container to try to reset any external styling */
+        .ad-container iframe {
+            display: block; /* Ensure it's treated as a block element */
+            margin: 0 auto; /* Center iframe itself */
+            border: none; /* Remove any default iframe borders */
+            width: 468px !important; /* Force the width as per your ad code */
+            height: 60px !important; /* Force the height as per your ad code */
+            max-width: 100% !important; /* Ensure iframe doesn't exceed container width on smaller screens */
+            box-sizing: border-box; /* Crucial for responsiveness within fixed width ads */
+        }
+
+
+        @media (max-width: 768px) {
+            .container { padding: 15px 30px; } 
+            h1 { font-size: 3.5em; line-height: 0.6em; letter-spacing: -2px; margin-top: -25px; } 
+            .sub-heading { font-size: 1.2em; margin-bottom: 20px; line-height: 1em; margin-top: -15px; } 
+            .main-image { margin-bottom: -30px; } 
+            .greeting-message { margin-bottom: 0px; } 
+            .share-sender-section { padding: 20px; margin-top: 25px; margin-bottom: 25px; }
+            .sender-name-input { width: 90%; }
+            .share-prompt { font-size: 1.1em; margin-bottom: 10px; }
+            .share-button { padding: 15px 30px; font-size: 1.2em; }
+            .share-button i { font-size: 1.3em; margin-right: 10px; }
+            .story-box { padding: 20px; margin-top: 25px; margin-bottom: 25px; }
+            .story-box p { font-size: 1em; line-height: 1.6; } 
+            .ad-container { margin: 15px 0; min-height: 50px; } 
+            .ad-container iframe { 
+                width: 320px !important; /* Common mobile ad size */
+                height: 50px !important; /* Common mobile ad size */
+            } 
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 10px 20px; } 
+            h1 { font-size: 2.8em; line-height: 0.6em; letter-spacing: -2px; margin-top: -25px; } 
+            .sub-heading { font-size: 1em; line-height: 1em; margin-top: -15px; } 
+            .main-image { margin-bottom: -30px; } 
+            .greeting-message { margin-bottom: 0px; } 
+            .share-sender-section { padding: 15px; margin-top: 20px; margin-bottom: 20px; }
+            .sender-name-input { width: 95%; }
+            .share-prompt { font-size: 1em; }
+            .share-button { padding: 12px 25px; font-size: 1em; }
+            .share-button i { font-size: 1.1em; }
+            .story-box { padding: 15px; margin-top: 20px; margin-bottom: 20px; }
+            .story-box p { font-size: 0.95em; line-height: 1.5; } 
+            .ad-container { margin: 10px 0; min-height: 30px; } 
+            .ad-container iframe { 
+                width: 300px !important; /* Common mobile ad size */
+                height: 30px !important; /* Common mobile ad size */
+            } 
         }
     </style>
-
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '451d11a31701eaa643b3dc733c5ca171',
-            'format' : 'iframe',
-            'height' : 60,
-            'width' : 468,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
-
 </head>
 <body>
+    <div class="confetti" style="left: 10%; top: 5%;"></div>
+    <div class="confetti" style="left: 20%; top: 15%; animation-delay: 0.5s;"></div>
+    <div class="confetti" style="left: 30%; top: 25%; animation-delay: 1.5s;"></div>
+    <div class="confetti" style="left: 40%; top: 5%; animation-delay: 2s;"></div>
+    <div class="confetti" style="left: 50%; top: 35%; animation-delay: 2.5s;"></div>
+    <div class="confetti" style="left: 60%; top: 10%; animation-delay: 3s;"></div>
+    <div class="confetti" style="left: 70%; top: 30%; animation-delay: 3.5s;"></div>
+    <div class="confetti" style="left: 80%; top: 0%; animation-delay: 4s;"></div>
+    <div class="confetti" style="left: 90%; top: 20%; animation-delay: 4.5s;"></div>
+    <div class="confetti" style="left: 15%; top: 40%; animation-delay: 1s;"></div>
+    <div class="confetti" style="left: 25%; top: 0%; animation-delay: 2s;"></div>
+    <div class="confetti" style="left: 35%; top: 18%; animation-delay: 3s;"></div>
+    <div class="confetti" style="45%; top: 5%; animation-delay: 4s;"></div>
+    <div class="confetti" style="55%; top: 25%; animation-delay: 5s;"></div>
+    <div class="confetti" style="65%; top: 15%; animation-delay: 0.7s;"></div>
+    <div class="confetti" style="75%; top: 35%; animation-delay: 1.7s;"></div>
+    <div class="confetti" style="85%; top: 10%; animation-delay: 2.7s;"></div>
+    <div class="confetti" style="95%; top: 40%; animation-delay: 3.7s;"></div>
 
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '451d11a31701eaa643b3dc733c5ca171',
-            'format' : 'iframe',
-            'height' : 60,
-            'width' : 468,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+    <div class="main-content-wrapper">
 
-    <div class="main-content">
-        <h1>Happy Raksha Bandhan! <span class="emoji">🎉</span></h1>
-        
-        <div class="main-gif-container">
-            <img src="Raksha Bandhan GIF.webp" alt="Raksha Bandhan GIF" class="main-gif">
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '451d11a31701eaa643b3dc733c5ca171',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+        </div>
+
+        <div class="container">
+            <p class="greeting-message">Happy Raksha Bandhan! यह प्यारा संदेश आपके लिए है। 😊</p>
+
+            <img src="Raksha Bandhan GIF-5.webp" alt="Happy Raksha Bandhan" class="main-image">
+
+            <h1>रक्षाबंधन की हार्दिक शुभकामनाएँ! ❤️</h1>
+            <p class="sub-heading">भाई-बहन के अटूट प्रेम और विश्वास का पर्व 💖</p>
+
+            <div class="ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '451d11a31701eaa643b3dc733c5ca171',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+            </div>
+
+            <div class="share-sender-section">
+                <input type="text" id="senderNameInput" class="sender-name-input" placeholder="यहाँ अपना नाम लिखें...">
+                <p class="share-prompt">यह प्यारा संदेश अपने दोस्तों और परिवार को भी भेजें! 👇</p>
+                <a href="#" id="whatsappShareButton" class="share-button">
+                    <i class="fab fa-whatsapp"></i> WhatsApp पर तुरंत शेयर करें!
+                </a>
+            </div>
+            
+            <div class="story-box">
+                <div class="ad-container">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '451d11a31701eaa643b3dc733c5ca171',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+                </div>
+                <p>
+                    हर साल की तरह, यह <span class="highlight">रक्षाबंधन</span> भी रिश्तों की मिठास और यादों की खुशबू लेकर आया है। 🍬 यह सिर्फ एक धागा नहीं, बल्कि बचपन की शरारतों, रूठने-मनाने की कहानियों और हर मुश्किल में एक-दूसरे के साथ खड़े रहने के वादों का प्रतीक है। 🤝
+                </p>
+
+                <p>
+                    मुझे याद है, कैसे छोटी-छोटी बातों पर हम लड़ते थे और फिर थोड़ी देर बाद ही सब भूलकर एक हो जाते थे। 😇 तुम्हारी हर डांट में मेरा ख्याल होता था और मेरा हर मजाक तुम्हारे लिए प्यार। आज भी जब तुम याद आते हो, तो बस एक मुस्कान चेहरे पर आ जाती है। 😊
+                </p>
+
+                <div class="ad-container">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '451d11a31701eaa643b3dc733c5ca171',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+                </div>
+                
+                <p>
+                    दूरी चाहे कितनी भी हो, यह पवित्र बंधन हमें हमेशा जोड़े रखता है। 🌟 यह राखी का धागा हमें याद दिलाता है कि तुम सिर्फ भाई/बहन नहीं, बल्कि मेरे सबसे अच्छे दोस्त और सबसे बड़े सपोर्ट सिस्टम हो। 💪
+                </p>
+
+                <p>
+                    इस पावन अवसर पर, मेरी यही दुआ है कि हमारा प्यार और विश्वास हमेशा यूं ही बना रहे। तुम्हें और तुम्हारे पूरे परिवार को ढेर सारी खुशियाँ और समृद्धि मिले! 🎉
+                </p>
+                <div class="ad-container">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '451d11a31701eaa643b3dc733c5ca171',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+                </div>
+            </div>
+            
         </div>
         
-        <h2>Apna Naam Likhein: <span class="emoji">✍️</span></h2>
-        <input type="text" id="senderName" placeholder="आपका नाम">
-        
-        <button class="whatsapp-button" onclick="shareViaWhatsApp()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
-            Share on WhatsApp
-        </button>
-        
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '451d11a31701eaa643b3dc733c5ca171',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
-        
-    </div>
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '451d11a31701eaa643b3dc733c5ca171',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+        </div>
 
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '451d11a31701eaa643b3dc733c5ca171',
-            'format' : 'iframe',
-            'height' : 60,
-            'width' : 468,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
+    </div> <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const shareButton = document.getElementById('whatsappShareButton');
+            const senderNameInput = document.getElementById('senderNameInput');
+            
+            function updateShareLink() {
+                const enteredName = senderNameInput.value.trim();
+                let nameSuffix = '';
+                let shareMessage = "आपको और आपके परिवार को रक्षाबंधन की हार्दिक शुभकामनाएँ! ✨ इस प्यारे से संदेश और कहानी को देखने के लिए क्लिक करें: ";
 
-    <div class="story-section">
-        <h3>रक्षा बंधन की पावन कहानी <span class="emoji">💖</span><span class="emoji">🙏</span></h3>
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '451d11a31701eaa643b3dc733c5ca171',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
-        <p>रक्षा बंधन का त्योहार भाई <span class="emoji">👦</span> और बहन <span class="emoji">👧</span> के अटूट प्रेम <span class="emoji">❤️</span> और विश्वास <span class="emoji">🤝</span> का प्रतीक है। यह सिर्फ एक धागा <span class="emoji">🧵</span> नहीं, बल्कि भावनाओं का एक ऐसा बंधन है जो सदियों से भारतीय संस्कृति में अपनी जगह बनाए हुए है।</p>
-        <p><strong>पौराणिक कथाएँ:</strong></p>
-        <p>एक प्रचलित कथा के अनुसार, जब भगवान कृष्ण <span class="emoji">🕉️</span> ने शिशुपाल का वध किया था, तब उनकी उंगली कट गई थी और रक्त <span class="emoji">🩸</span> बहने लगा था। यह देखकर द्रौपदी ने तुरंत अपनी साड़ी का एक टुकड़ा फाड़कर उनकी उंगली पर बाँध दिया। इस स्नेह <span class="emoji">🥰</span> और ममता <span class="emoji">🥺</span> से प्रभावित होकर भगवान कृष्ण ने द्रौपदी को 'बहन' माना और वचन दिया कि वह हर संकट में उनकी रक्षा करेंगे <span class="emoji">🛡️</span>। इसी वचन को उन्होंने चीर हरण के समय निभाया था <span class="emoji">🙌</span>।</p>
-        <p>एक और कथा राजा बलि और देवी लक्ष्मी <span class="emoji">🪷</span> से संबंधित है। राजा बलि ने यज्ञ किया और भगवान विष्णु <span class="emoji">🔱</span> से अपने साथ पाताल लोक में निवास करने का आग्रह किया। भगवान विष्णु मान गए। जब लक्ष्मी जी को यह बात पता चली, तो वह चिंतित <span class="emoji">😟</span> हो गईं। नारad मुनि की सलाह पर, लक्ष्मी जी बलि के पास एक सामान्य स्त्री के वेश में गईं और उन्हें राखी <span class="emoji">🎗️</span> बांधी। बलि ने उन्हें अपनी बहन मानकर कुछ मांगने को कहा। तब लक्ष्मी जी ने अपने पति भगवान विष्णु को वापस वैकुंठ भेजने का आग्रह किया। बलि ने अपनी बहन की बात मानी और भगवान विष्णु को वैकुंठ जाने दिया। तभी से यह दिन 'रक्षा बंधन' के रूप में मनाया जाने लगा <span class="emoji">🌟</span>।</p>
-        <p><strong>ऐतिहासिक महत्व:</strong></p>
-        <p>इतिहास में भी रक्षा बंधन के कई प्रसंग मिलते हैं। जैसे, रानी कर्णावती ने मुगल सम्राट हुमायूँ को राखी भेजकर उनसे मदद मांगी थी <span class="emoji">💌</span>, और हुमायूँ ने उनकी रक्षा की थी <span class="emoji">⚔️</span>। यह त्योहार सिर्फ खून के रिश्तों तक सीमित नहीं है, बल्कि यह किसी भी ऐसे व्यक्ति को राखी बांधने का प्रतीक है जिससे आप सुरक्षा <span class="emoji">🔒</span>, सम्मान <span class="emoji">🙇‍♀️</span> और प्यार <span class="emoji">💖</span> की अपेक्षा रखते हैं।</p>
-        <p>आज के समय में भी, रक्षा बंधन का महत्व उतना ही गहरा है। यह हमें सिखाता है कि रिश्ते कितने अनमोल <span class="emoji">💎</span> होते हैं और उनकी रक्षा करना हमारा कर्तव्य <span class="emoji">🛡️</span> है। भाई-बहन के रिश्ते को और मजबूत बनाने का यह एक सुनहरा अवसर है <span class="emoji">☀️</span>। इस शुभ अवसर पर, आइए हम सभी अपने रिश्तों को और भी गहरा करें और एक-दूसरे के प्रति अपने प्रेम और सम्मान को व्यक्त करें <span class="emoji">🫂</span>।</p>
-        <p>आपको और आपके परिवार को रक्षा बंधन की हार्दिक शुभकामनाएँ! <span class="emoji">🎉</span><span class="emoji">💐</span></p>
-    </div>
+                if (enteredName !== '') {
+                    nameSuffix = `\n\n${enteredName} की ओर से`;
+                }
 
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '451d11a31701eaa643b3dc733c5ca171',
-            'format' : 'iframe',
-            'height' : 60,
-            'width' : 468,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
-
-    <script>
-        function shareViaWhatsApp() {
-            const senderName = document.getElementById('senderName').value;
-            if (senderName) {
-                const message = `आपको रक्षा बंधन की शुभकामनाएँ! 🎉 - ${encodeURIComponent(senderName)} की ओर से`;
-                
-                // Get the current page URL without query parameters for the share link
-                const currentPageUrl = window.location.href.split('?')[0]; 
-                // IMPORTANT: Replace 'https://example.com/your-page.html' with the actual URL where you will host this page.
-                // If you are using this locally and just sharing the generated link, the currentPageUrl will work.
-                const link = `${currentPageUrl}?message=${encodeURIComponent(message)}`;
-                
-                // Open WhatsApp with the pre-filled message and link
-                window.open(`https://wa.me/?text=${encodeURIComponent(message)}%0A%0Aइस लिंक पर क्लिक करके देखें: ${encodeURIComponent(link)}`, '_blank');
-                
-            } else {
-                alert("कृपया अपना नाम डालें।");
+                const webpageUrl = window.location.href;
+                const finalShareText = encodeURIComponent(shareMessage + webpageUrl + nameSuffix);
+                shareButton.href = `https://api.whatsapp.com/send?text=${finalShareText}`;
             }
-        }
-    </script>
 
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '451d11a31701eaa643b3dc733c5ca171',
-            'format' : 'iframe',
-            'height' : 60,
-            'width' : 468,
-            'params' : {}
-        };
+            senderNameInput.addEventListener('input', updateShareLink);
+            updateShareLink();
+        });
     </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/451d11a31701eaa643b3dc733c5ca171/invoke.js"></script>
-
 </body>
 </html>
